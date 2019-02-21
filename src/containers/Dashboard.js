@@ -11,7 +11,7 @@ class Dashboard extends Component {
         	<div className="container-fluid">
         		<div className="flex-xl-nowrap row">
           			<Sidebar rutas={routes}/>
-					<Workspace rutas = {routes}/>
+								<Workspace rutas = {routes}/>
         		</div>
         	</div>
       </div>
