@@ -4,13 +4,28 @@ import {Header, Sidebar, Workspace} from '../components/index.components'
 import '../styles/Dashboard.css'
 
 class Dashboard extends Component {
+	constructor(props) {
+		super(props);
+		this.state ={
+			open : true
+		}
+
+		this.handleClick = this.handleClick.bind(this)
+	}
+
+	handleClick(){
+			this.setState({
+					open : !this.state.open
+			})
+	}
+	
   render() {
     return (
     	<div>
-    		<Header/>
+    		<Header control_sidebar={this.handleClick}/>
         	<div className="container-fluid">
         		<div className="flex-xl-nowrap row">
-          			<Sidebar rutas={routes}/>
+          			<Sidebar open={this.state.open} rutas={routes}/>
 								<Workspace rutas = {routes}/>
         		</div>
         	</div>
