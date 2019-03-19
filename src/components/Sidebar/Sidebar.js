@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../../styles/Sidebar.css'
 import {NavLink} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 
-export default class Sidebar extends Component {
+const Sidebar = (props) => {
 
-  render() {
-    const {rutas,open} = this.props
+    const {rutas,open} = props
+
     let translate = 'open-nav'
     if(open){
       translate = 'open-nav'
     }else{
       translate='close-nav'
     }
-    const hola = (
+    return (
       <div className={classNames("sidebar col-xl-2 col-md-3 col-12 d-flex flex-column",`${translate}`)} style={{padding:'0px'}}>
         <div className='sidenav'>
           <div className="contenedor-padding">
@@ -36,6 +36,8 @@ export default class Sidebar extends Component {
         </div>
       </div>
     )
-    return(hola)
-  }
+
+
 }
+
+export default Sidebar

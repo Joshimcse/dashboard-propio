@@ -1,37 +1,31 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import routes from '../routes'
 import {Header, Sidebar, Workspace} from '../components/index.components'
 import '../styles/Dashboard.css'
 
-class Dashboard extends Component {
-	constructor(props) {
-		super(props);
-		this.state ={
-			open : true
-		}
-
-		this.handleClick = this.handleClick.bind(this)
-	}
-
-	handleClick(){
-			this.setState({
-					open : !this.state.open
+const Dashboard =(props) => {
+	const[open, setOpen] = useState({
+			openValue:true
+	})
+	
+	const handleClick=()=>{
+			setOpen({
+				openValue : !open.openValue
 			})
 	}
-	
-  render() {
+
     return (
     	<div>
-    		<Header control_sidebar={this.handleClick}/>
+    		<Header control_sidebar={handleClick} open={open.openValue}/>
         	<div className="container-fluid">
         		<div className="flex-xl-nowrap row">
-          			<Sidebar open={this.state.open} rutas={routes}/>
+          			<Sidebar open={open.openValue} rutas={routes}/>
 								<Workspace rutas = {routes}/>
         		</div>
         	</div>
       </div>
     )
-  }
+
 }
 
 export default Dashboard

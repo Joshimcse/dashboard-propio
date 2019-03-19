@@ -1,0 +1,19 @@
+[
+     { "id": "10", "nombre": "Artes y Manualidades" },
+     { "id": "11", "nombre": "Figuras de Acci\u00f3n" },
+     { "id": "12", "nombre": "Mu\u00f1ecas y Coleccionables" },
+     { "id": "14", "nombre": "Juegos de Mesa y Puzzles" },
+     { "id": "15", "nombre": "Juegos de Profesiones" },
+     { "id": "16", "nombre": "Bloques y Construcci\u00f3n" },
+     { "id": "17", "nombre": "Accesorios" },
+     { "id": "18", "nombre": "Peluches" },
+     { "id": "19", "nombre": "Juguetes de Exterior" },
+     { "id": "20", "nombre": "Juegos de Jard\u00edn" },
+     { "id": "21", "nombre": "Casas de mu\u00f1eca" },
+     { "id": "22", "nombre": "Veh\u00edculos" },
+     { "id": "23", "nombre": "Lanzadores" },
+     { "id": "24", "nombre": "Librer\u00eda" },
+     { "id": "25", "nombre": "Escolares" },
+     { "id": "26", "nombre": "Beb\u00e9s" },
+     { "id": "27", "nombre": "Paw Patrol" }
+]

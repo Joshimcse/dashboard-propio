@@ -1,9 +1,7 @@
 import Home from './Home/Home.js'
-import Otros from './Otros/Otros.js'
-import SubMenu from './SubMenu/SubMenu'
+import Categorias from './Categorias/Categorias'
 
 export{
     Home,
-    Otros,
-    SubMenu
+    Categorias
 }

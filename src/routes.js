@@ -1,4 +1,4 @@
-import {Home, Otros, SubMenu} from './pages/index.pages'
+import {Home,Categorias} from './pages/index.pages'
 
 export default{
     paginas:[
@@ -9,21 +9,10 @@ export default{
             component: Home
         },
         {
-            path: '/otros',
-            nombre: 'Otros',
+            path: '/categorias',
+            nombre: 'Categorias',
             tipo: 'link',
-            component: Otros
-        },
-        {
-            path: '/menu',
-            nombre: 'Menú',
-            tipo: 'menu',
-            submenu: [{
-                path: '/submenu',
-                name: 'Submenu',
-                component: SubMenu
-              }
-            ]
-          }
+            component: Categorias
+        }
     ]
 }
