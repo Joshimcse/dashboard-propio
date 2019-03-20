@@ -1,4 +1,4 @@
-import React,{useReducer} from "react";
+import React,{useReducer,useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from "./containers/Dashboard";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -11,16 +11,20 @@ import { setCurrentUser } from "./context/actions/authentication.action";
 library.add(faHome);
 
 const App = () => {
-   /* const [stateUser, dispatch] = useReducer(authReducer, {
+    const [stateUser, dispatch] = useReducer(authReducer, {
         isAuthenticated: false,
         user: {}
     });
-
-    if (localStorage.jwt) {
-        const decoded = "prueba dispatch";
-      
-        dispatch(setCurrentUser(decoded));
-    }*/
+    useEffect(()=>{
+        if (localStorage.jwt) {
+            const decoded = "prueba dispatch";
+          
+            dispatch(setCurrentUser(decoded));
+        }else{
+            console.log("no hay token")
+        }
+    },[])
+   
     return (
         <BrowserRouter>
             <Switch>
