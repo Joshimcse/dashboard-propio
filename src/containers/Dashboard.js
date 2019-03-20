@@ -17,12 +17,11 @@ const Dashboard =(props) => {
 	}
 
 	
-	useEffect(()=>{
+/*	useEffect(()=>{
 		if(!context.stateUser.isAuthenticated) {
-			props.history.push('/login');
-			
+			props.history.push('/');
 		}
-	})
+	},[])*/
 
     return (
     	<div>

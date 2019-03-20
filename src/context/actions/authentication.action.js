@@ -4,7 +4,7 @@ export const DELETE_CURRENT_USER = "DELETE_CURRENT_USER";
 export const GET_ERRORS = "GET_ERRORS";
 
 export const loginUser = user => dispatch => {
-  fetch("http://localhost:3000/server/login", {
+  /*fetch("http://localhost:3000/server/login", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -39,7 +39,8 @@ export const loginUser = user => dispatch => {
         type: GET_ERRORS,
         payload: err
       });
-    });
+    });*/
+    console.log("entró");
 };
 
 export const setCurrentUser = decoded => {

@@ -9,11 +9,12 @@ import {DELETE_CURRENT_USER} from './../../context/actions/authentication.action
 
 
 const Header =(props) => {
-	const {dispatch} = useContext(AuthStateGlobal);
-
-	function handleClick() {
-		dispatch({type:DELETE_CURRENT_USER});
-	  }
+	const context = useContext(AuthStateGlobal);
+console.log(context.stateUser);
+		function handleClick() {
+			context.dispatch({type:DELETE_CURRENT_USER});
+		}
+		
 
     return (
         <Navbar sticky="top"  className="header navbar-dark">
@@ -23,7 +24,8 @@ const Header =(props) => {
 					</div>
 					<Button onClick={props.control_sidebar} variant="primary" >{props.open.toString()}</Button>
 					<div style={{color:'#fff'}} className="flex-grow-1 user">
-					<Button onClick={handleClick} variant="primary" >Salir</Button>
+					{context.stateUser.isAuthenticated?<Button onClick={handleClick} variant="danger" >Salir</Button>:<span className="btn btn-success"><Link to="/login">Log In</Link></span>}
+					
 					</div>
     	</Navbar>
     )

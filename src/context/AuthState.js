@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import authReducer from "./reducers/authentication.reducer";
-import { setCurrentUser, seteatoken } from "./actions/authentication.action";
+import { setCurrentUser } from "./actions/authentication.action";
 import AuthStateGlobal from "./AuthStateGlobal";
 
 
@@ -16,8 +16,6 @@ const AuthState = (props) => {
             const decoded = localStorage.jwt;
           
             dispatch(setCurrentUser(decoded));
-        }else{
-            dispatch(seteatoken())
         }
     },[])
 
