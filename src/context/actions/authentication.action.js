@@ -1,5 +1,6 @@
 import jwt_decode from "jwt-decode";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const DELETE_CURRENT_USER = "DELETE_CURRENT_USER";
 export const GET_ERRORS = "GET_ERRORS";
 
 export const loginUser = user => dispatch => {
@@ -48,10 +49,12 @@ export const setCurrentUser = decoded => {
   };
 };
 
-
-
-export const logoutUser = () => dispatch => {
-  localStorage.removeItem("jwt");
-  dispatch(setCurrentUser({}));
-  
+export const seteatoken=()=>{
+  localStorage.setItem("jwt", "Nicolás Morales");
+}
+export const logoutUser = () => {
+  return {
+    type: DELETE_CURRENT_USER,
+    payload: {}
+  };
 };

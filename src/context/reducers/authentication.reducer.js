@@ -1,4 +1,4 @@
-import {SET_CURRENT_USER} from '../actions/authentication.action'
+import {SET_CURRENT_USER,DELETE_CURRENT_USER} from '../actions/authentication.action'
 import isEmpty from '../validations/isEmpty'
 
 const initialState = {
@@ -6,14 +6,21 @@ const initialState = {
     user: {}
 }
 
-export const authReducer = (state = initialState, action ) =>{
-    console.log(action)
+export default function(state = initialState, action ){
     switch(action.type) {
         case SET_CURRENT_USER:
             return {
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
+            }
+        case DELETE_CURRENT_USER:
+        console.log("entró al reducer")
+        localStorage.removeItem("jwt");
+            return {
+                ...state,
+                isAuthenticated: false,
+                user: {}
             }
 
         default: 

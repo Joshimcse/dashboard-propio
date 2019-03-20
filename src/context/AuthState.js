@@ -1,6 +1,6 @@
-import React, { useReducer } from "react";
-import { authReducer } from "./reducers/authentication.reducer";
-import { setCurrentUser } from "./actions/authentication.action";
+import React, { useReducer, useEffect } from "react";
+import authReducer from "./reducers/authentication.reducer";
+import { setCurrentUser, seteatoken } from "./actions/authentication.action";
 import AuthStateGlobal from "./AuthStateGlobal";
 
 
@@ -10,17 +10,22 @@ const AuthState = (props) => {
         isAuthenticated: false,
         user: {}
     });
-
-    if (localStorage.jwt) {
-        const decoded = "prueba dispatch";
-      
-        dispatch(setCurrentUser(decoded));
-    }
+    
+    useEffect(()=>{
+        if (localStorage.jwt) {
+            const decoded = localStorage.jwt;
+          
+            dispatch(setCurrentUser(decoded));
+        }else{
+            dispatch(seteatoken())
+        }
+    },[])
 
     return (
         <AuthStateGlobal.Provider
             value={{
-                stateUser
+                stateUser,
+                dispatch
             }}
         >
            {props.children}
