@@ -18,7 +18,7 @@ const AuthState = (props) => {
             dispatch(setCurrentUser(jwt_decode(decoded)));
         }
     },[])
-  
+
     return (
         <AuthStateGlobal.Provider
             value={{

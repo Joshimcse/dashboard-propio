@@ -13,7 +13,6 @@ const Header =(props) => {
 		const cerrarSesion =() =>{
 			logoutUser(context.dispatch)
 		}
-
     return (
         <Navbar sticky="top"  className="header navbar-dark">
 					
@@ -22,7 +21,7 @@ const Header =(props) => {
 					</div>
 					<Button onClick={props.control_sidebar} variant="primary" >{props.open.toString()}</Button>
 					<div style={{color:'#fff'}} className="flex-grow-1 user">
-					{context.stateUser.isAuthenticated?<Button onClick={cerrarSesion} variant="danger" >Salir</Button>:<span className="btn btn-success"><Link to="/login">Log In</Link></span>}
+					{context.stateUser.isAuthenticated?context.stateUser.isAuthenticated===true?<Button onClick={cerrarSesion} variant="danger" >Salir</Button>:<span className="btn btn-success"><Link to="/login">Log In</Link></span>:''}
 					
 					</div>
     	</Navbar>

@@ -18,11 +18,12 @@ const Dashboard =(props) => {
 	}
 	
 		useEffect(()=>{
+	
 		if(context.stateUser.isAuthenticated===false) {
 			props.history.push('/login');
 		}
 	})
-
+	console.log("dashboard")
     return (
     	<div>
     		<Header control_sidebar={handleClick} open={open.openValue}/>
