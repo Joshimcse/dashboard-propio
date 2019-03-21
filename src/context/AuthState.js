@@ -8,17 +8,17 @@ import jwt_decode from "jwt-decode";
 const AuthState = (props) => {
 
     const [stateUser, dispatch] = useReducer(authReducer, {
-        isAuthenticated: false,
+        isAuthenticated: null,
         user: {}
     });
     
     useEffect(()=>{
         if (localStorage.jwt) {
-            const decoded = jwt_decode(localStorage.jwt);
-            dispatch(setCurrentUser(decoded));
+            const decoded = localStorage.jwt?localStorage.jwt:"";
+            dispatch(setCurrentUser(jwt_decode(decoded)));
         }
     },[])
-
+  
     return (
         <AuthStateGlobal.Provider
             value={{

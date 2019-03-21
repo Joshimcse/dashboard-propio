@@ -1,6 +1,5 @@
 import jwt_decode from "jwt-decode";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
-export const DELETE_CURRENT_USER = "DELETE_CURRENT_USER";
 export const GET_ERRORS = "GET_ERRORS";
 
 export const loginUser = (user,dispatch) =>{
@@ -24,13 +23,13 @@ export const loginUser = (user,dispatch) =>{
           payload: {}
         });
       } else {
-        dispatch(logoutUser());
+        logoutUser(dispatch);
       }
     })
     .catch(err => {
       //error de servidor
       console.error(err);
-      dispatch(logoutUser());
+      logoutUser(dispatch);
     });
 
 };
@@ -42,9 +41,8 @@ export const setCurrentUser = decoded => {
   };
 };
 
-export const logoutUser = () => {
-  return {
-    type: DELETE_CURRENT_USER,
-    payload: {}
-  };
+export const logoutUser = (dispatch) => {
+  localStorage.removeItem("jwt");
+  dispatch(setCurrentUser({}));
+  
 };
