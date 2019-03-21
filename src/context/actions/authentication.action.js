@@ -3,8 +3,8 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const DELETE_CURRENT_USER = "DELETE_CURRENT_USER";
 export const GET_ERRORS = "GET_ERRORS";
 
-export const loginUser = user => dispatch => {
-  /*fetch("http://localhost:3000/server/login", {
+export const loginUser = (user,dispatch) =>{
+  fetch("http://178.128.227.48:3000/server/login", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -25,22 +25,14 @@ export const loginUser = user => dispatch => {
         });
       } else {
         dispatch(logoutUser());
-        dispatch({
-          type: GET_ERRORS,
-          payload: data.err.message
-        });
       }
     })
     .catch(err => {
       //error de servidor
       console.error(err);
       dispatch(logoutUser());
-      dispatch({
-        type: GET_ERRORS,
-        payload: err
-      });
-    });*/
-    console.log("entró");
+    });
+
 };
 
 export const setCurrentUser = decoded => {
@@ -50,9 +42,6 @@ export const setCurrentUser = decoded => {
   };
 };
 
-export const seteatoken=()=>{
-  localStorage.setItem("jwt", "Nicolás Morales");
-}
 export const logoutUser = () => {
   return {
     type: DELETE_CURRENT_USER,

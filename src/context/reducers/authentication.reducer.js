@@ -8,6 +8,7 @@ const initialState = {
 
 export default function(state = initialState, action ){
     switch(action.type) {
+  
         case SET_CURRENT_USER:
             return {
                 ...state,
@@ -15,7 +16,6 @@ export default function(state = initialState, action ){
                 user: action.payload
             }
         case DELETE_CURRENT_USER:
-        console.log("entró al reducer")
         localStorage.removeItem("jwt");
             return {
                 ...state,

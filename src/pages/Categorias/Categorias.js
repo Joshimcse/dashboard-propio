@@ -7,6 +7,7 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import data from "../../data/jsoncategorias/categorias.json";
 import cats from "../../data/jsoncategorias/index";
 import Card from "react-bootstrap/Card";
+import CardDeck from 'react-bootstrap/CardDeck'
 
 const Categorias = () => {
     const [categorias, setCategorias] = useState({
@@ -46,37 +47,36 @@ const Categorias = () => {
             </Row>
             <Row>
                 <Col>
+                <CardDeck>
+                    <Row>
                         {!contenido
                             ? "no hay productos"
                             : !contenido.productos
                             ? "no hay productos"
                             : contenido.productos.map((contenido, index) => {
+                                console.log(contenido)
                                   return (
-                                      <Card style={{ width: '16rem' }}>
+                                      <Col md={4}>
+                                      <Card style={{width:"18rem"}} >
                                           <Card.Img
                                               variant="top"
                                             src='http://via.placeholder.com/130'
                                           />
                                           <Card.Body>
                                               <Card.Title>
-                                                  Card title
+                                                  {contenido.producto}
                                               </Card.Title>
                                               <Card.Text>
-                                                  This is a wider card with
-                                                  supporting text below as a
-                                                  natural lead-in to additional
-                                                  content. This content is a
-                                                  little bit longer.
+                                                  Descripción para {contenido.producto}
                                               </Card.Text>
                                           </Card.Body>
-                                          <Card.Footer>
-                                              <small className="text-muted">
-                                                  Last updated 3 mins ago
-                                              </small>
-                                          </Card.Footer>
+                                          
                                       </Card>
+                                      </Col>
                                   );
                               })}
+                              </Row>
+                              </CardDeck>
                 </Col>
             </Row>
         </Container>
