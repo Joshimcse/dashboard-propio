@@ -16,6 +16,7 @@ const Login = props => {
         if (context.stateUser.isAuthenticated===true) {
             props.history.push("/");
         }
+
     });
     const handleSubmit = e => {
         /**/
@@ -26,7 +27,9 @@ const Login = props => {
         loginUser(user, context.dispatch);
         e.preventDefault();
     };
+  
     return (
+        
         <Container>
             <Row>
                 <Col md={4}>
