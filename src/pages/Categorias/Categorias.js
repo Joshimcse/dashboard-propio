@@ -1,62 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import data from "../../data/jsoncategorias/categorias.json";
 import cats from "../../data/jsoncategorias/index";
 import Card from "react-bootstrap/Card";
 import CardDeck from 'react-bootstrap/CardDeck'
+import AuthStateGlobal from "../../context/AuthStateGlobal";
 
 const Categorias = () => {
-    const [categorias, setCategorias] = useState({
-        cat: data,
-        catSelect: 10
-    });
+    const context = useContext(AuthStateGlobal);
 
-    const mostrarCategoria = id => {
-        setCategorias({
-            catSelect: id,
-            cat: data
-        });
-    };
-    const contenido = cats[categorias.catSelect];
-
+    const contenido = cats[context.stateCategoria.catSelect];
     return (
         <Container>
-            <Row>
-                <Col>
-                    <ButtonToolbar>
-                        {categorias.cat.map((categoria, index) => {
-                            return (
-                                <Button
-                                    key={index}
-                                    variant="primary"
-                                    onClick={() =>
-                                        mostrarCategoria(categoria.id)
-                                    }
-                                    className="mr-1 mb-1"
-                                >
-                                    {categoria.nombre}
-                                </Button>
-                            );
-                        })}
-                    </ButtonToolbar>
-                </Col>
-            </Row>
+            
             <Row>
                 <Col>
                 <CardDeck>
                     <Row>
                         {!contenido
                             ? "no hay productos"
-                            : !contenido.productos
+                            : contenido.productos.length === 0
                             ? "no hay productos"
                             : contenido.productos.map((contenido, index) => {
-                                console.log(contenido)
                                   return (
-                                      <Col md={4}>
+                                      <Col key={index} md={4}>
                                       <Card style={{width:"18rem"}} >
                                           <Card.Img
                                               variant="top"

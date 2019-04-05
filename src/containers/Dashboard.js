@@ -1,12 +1,12 @@
-import React, { useState,useEffect,useContext } from 'react'
+import React, { useState } from 'react'
 import routes from '../routes'
 import {Header, Sidebar, Workspace} from '../components/index.components'
 import '../styles/Dashboard.css'
-import AuthStateGlobal from '../context/AuthStateGlobal'
+//import AuthStateGlobal from '../context/AuthStateGlobal'
 
 
 const Dashboard =(props) => {
-	const context = useContext(AuthStateGlobal)
+	//const context = useContext(AuthStateGlobal)
 	const[open, setOpen] = useState({
 			openValue:true
 	})
@@ -17,11 +17,12 @@ const Dashboard =(props) => {
 			})
 	}
 	
-		useEffect(()=>{
+	//useLayoutEffect(()=>{
+		/*	console.log(context.stateUser.isAuthenticated);
 		if(context.stateUser.isAuthenticated===false) {
 			props.history.push('/login');
-		}
-	})
+		}*/
+//	})
 
     return (
     	<div>

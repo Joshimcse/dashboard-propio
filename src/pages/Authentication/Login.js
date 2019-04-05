@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useLayoutEffect, useContext, useState } from "react";
 import AuthStateGlobal from "../../context/AuthStateGlobal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,7 +12,7 @@ const Login = props => {
     const [rut_usuario, setrutusuario] = useState("");
     const [clave_usuario, setclaveusuario] = useState("");
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (context.stateUser.isAuthenticated===true) {
             props.history.push("/");
         }

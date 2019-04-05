@@ -1,12 +1,20 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import '../../styles/Sidebar.css'
-import {NavLink} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
+import data from "../../data/jsoncategorias/categorias.json";
+import AuthStateGlobal from "../../context/AuthStateGlobal";
+import {setCategoria} from '../../context/actions/categorias.action'
 
 const Sidebar = (props) => {
 
-    const {rutas,open} = props
+    const context = useContext(AuthStateGlobal);
+
+    const mostrarCategoria = id => {
+        context.dispatchCategoria(setCategoria(id))
+    };
+
+    const {open} = props
 
     let translate = 'open-nav'
     if(open){
@@ -14,24 +22,18 @@ const Sidebar = (props) => {
     }else{
       translate='close-nav'
     }
+
     return (
       <div className={classNames("sidebar col-xl-2 col-md-3 col-12 d-flex flex-column",`${translate}`)} style={{padding:'0px'}}>
         <div className='sidenav'>
           <div className="contenedor-padding">
-            {rutas.paginas.map((ruta,index)=>{
-
-                if(ruta.tipo==='menu'){
+          {data.map((categoria, index) => {
                   return(
-                    ruta.submenu.map(subMenu =><NavLink  exact activeClassName="selected" key={index} to={`${ruta.path}${subMenu.path}`} name={ruta.nombre} className='a-contenedor' ><div className='a-div'><FontAwesomeIcon className='a-icon' icon="home" /><p className="a-p">{ruta.nombre}</p></div></NavLink>)
+                    <div key={categoria.id} className='a-contenedor' onClick={() =>
+                      mostrarCategoria(categoria.id)
+                  } ><div className='a-div'><FontAwesomeIcon className='a-icon' icon="home" /><p className="a-p"> {categoria.nombre}</p></div></div>
                   )
-                }else{
-                  return(
-                    <NavLink exact activeClassName="selected" key={index} to={`${ruta.path}`} name={ruta.nombre} className='a-contenedor' ><div className='a-div'><FontAwesomeIcon className='a-icon' icon="home" /><p className="a-p">{ruta.nombre}</p></div></NavLink>
-                  )
-                }
-
-              
-            })}
+          })}
           </div>
         </div>
       </div>
