@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+/*import React,{useContext} from 'react';
 import AuthStateGlobal from "../../context/AuthStateGlobal";
 
 const Home = () => {
@@ -11,4 +11,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Home;*/

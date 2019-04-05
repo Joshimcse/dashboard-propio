@@ -1,30 +1,31 @@
-import React, { useLayoutEffect, useContext, useState } from "react";
-import AuthStateGlobal from "../../context/AuthStateGlobal";
+import React, { useLayoutEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { loginUser } from "../../context/actions/authentication.action";
+import { loginUser } from "../../Redux/actions/authentication.action";
+import { connect } from 'react-redux';
 
 const Login = props => {
-    const context = useContext(AuthStateGlobal);
+    //const context = useContext(AuthStateGlobal);
     const [rut_usuario, setrutusuario] = useState("");
     const [clave_usuario, setclaveusuario] = useState("");
 
     useLayoutEffect(() => {
-        if (context.stateUser.isAuthenticated===true) {
+        console.log(props.auth.isAuthenticated)
+        if (props.auth.isAuthenticated===true) {
             props.history.push("/");
         }
 
     });
     const handleSubmit = e => {
-        /**/
+
         const user = {
             rut_usuario,
             clave_usuario
         };
-        loginUser(user, context.dispatch);
+        props.loginUser(user);
         e.preventDefault();
     };
   
@@ -66,4 +67,8 @@ const Login = props => {
     );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+    auth: state.auth
+})
+
+export  default connect(mapStateToProps, { loginUser })(Login)

@@ -2,7 +2,8 @@ import jwt_decode from "jwt-decode";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const GET_ERRORS = "GET_ERRORS";
 
-export const loginUser = (user,dispatch) =>{
+export const loginUser = (user) => dispatch => {
+
   fetch("http://178.128.227.48:3000/server/login", {
     method: "POST",
     body: JSON.stringify(user),
@@ -41,7 +42,7 @@ export const setCurrentUser = decoded => {
   };
 };
 
-export const logoutUser = (dispatch) => {
+export const logoutUser = () => dispatch => {
   localStorage.removeItem("jwt");
   dispatch(setCurrentUser({}));
   
