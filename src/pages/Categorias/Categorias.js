@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import cats from "../../data/jsoncategorias/index";
 import Card from "react-bootstrap/Card";
 import CardDeck from 'react-bootstrap/CardDeck'
+import { connect } from 'react-redux';
 
 
-const Categorias = () => {
+const Categorias = (props) => {
 
-   // const contenido = cats[context.stateCategoria.catSelect];
+    const contenido = cats[props.cat.catSelect];
     return (
         <Container>
             
@@ -50,4 +51,8 @@ const Categorias = () => {
     );
 };
 
-export default Categorias;
+const mapStateToProps = (state) => ({
+    cat: state.categoria
+})
+
+export  default connect(mapStateToProps, null)(Categorias)
