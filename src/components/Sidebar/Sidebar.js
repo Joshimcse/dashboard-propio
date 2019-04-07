@@ -1,16 +1,17 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import '../../styles/Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 import data from "../../data/jsoncategorias/categorias.json";
-import {setCategoria} from '../../Redux/actions/categorias.action'
-import { connect } from 'react-redux';
+import AuthStateGlobal from "../../context/AuthStateGlobal";
+import {setCategoria} from '../../context/actions/categorias.action'
 
 const Sidebar = (props) => {
 
+    const context = useContext(AuthStateGlobal);
 
     const mostrarCategoria = id => {
-        props.setCategoria(id)
+        context.dispatchCategoria(setCategoria(id))
     };
 
     const {open} = props
@@ -41,5 +42,4 @@ const Sidebar = (props) => {
 
 }
 
-export  default connect(null, { setCategoria })(Sidebar)
-
+export default Sidebar

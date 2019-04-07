@@ -5,11 +5,12 @@ import Col from "react-bootstrap/Col";
 import cats from "../../data/jsoncategorias/index";
 import Card from "react-bootstrap/Card";
 import CardDeck from 'react-bootstrap/CardDeck'
-
+import AuthStateGlobal from "../../context/AuthStateGlobal";
 
 const Categorias = () => {
+    const context = useContext(AuthStateGlobal);
 
-   // const contenido = cats[context.stateCategoria.catSelect];
+    const contenido = cats[context.stateCategoria.catSelect];
     return (
         <Container>
             
