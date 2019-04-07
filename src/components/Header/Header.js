@@ -8,7 +8,9 @@ import { connect } from "react-redux";
 
 
 const Header = props => {
-    
+    const cerrarSesion = () => {
+        logoutUser();
+    };
     return (
         <Navbar sticky="top" className="header navbar-dark">
             <div className="d-none d-md-flex navbar-nav">
@@ -22,7 +24,7 @@ const Header = props => {
             <div style={{ color: "#fff" }} className="flex-grow-1 user">
                 {
                     props.auth.isAuthenticated === true ? (
-                        <Button onClick={props.logoutUser} variant="danger">
+                        <Button onClick={cerrarSesion} variant="danger">
                             Salir
                         </Button>
                     ) : (
