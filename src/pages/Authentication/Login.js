@@ -13,7 +13,7 @@ const Login = props => {
     const [clave_usuario, setclaveusuario] = useState("");
 
     useLayoutEffect(() => {
-        if (context.stateUser.isAuthenticated===true) {
+        if (context.state.isAuthenticated===true) {
             props.history.push("/");
         }
 

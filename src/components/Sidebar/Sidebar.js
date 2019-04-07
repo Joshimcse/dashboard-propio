@@ -11,7 +11,7 @@ const Sidebar = (props) => {
     const context = useContext(AuthStateGlobal);
 
     const mostrarCategoria = id => {
-        context.dispatchCategoria(setCategoria(id))
+        context.dispatch(setCategoria(id))
     };
 
     const {open} = props

@@ -10,7 +10,7 @@ import AuthStateGlobal from "../../context/AuthStateGlobal";
 const Categorias = () => {
     const context = useContext(AuthStateGlobal);
 
-    const contenido = cats[context.stateCategoria.catSelect];
+    const contenido = cats[context.state.catSelect];
     return (
         <Container>
             
