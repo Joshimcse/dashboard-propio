@@ -1,4 +1,4 @@
-import {Categorias} from './pages/index.pages'
+import {Categorias,Productos} from './pages/index.pages'
 
 export default{
     paginas:[
@@ -13,6 +13,12 @@ export default{
             nombre: 'Home',
             tipo: 'link',
             component: Categorias
+        },
+        {
+            path: '/prod/:id',
+            nombre: 'Productos',
+            tipo: 'link',
+            component: Productos
         }
     ]
 }
